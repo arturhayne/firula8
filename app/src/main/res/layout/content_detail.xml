@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_material"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.htech.firula8.ShotDetail.ShotDetailActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/detail_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/detail_views_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Views Count"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/detail_comments_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comments Count"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/detail_created_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Created "
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+
+</android.support.v4.widget.NestedScrollView>
