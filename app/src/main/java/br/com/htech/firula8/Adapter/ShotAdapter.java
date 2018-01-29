@@ -27,7 +27,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
     private Context c;
     private ShotAdapter.ShotOnClick shotOnClick;
 
-    public ShotAdapter(List<Shot> mlista, Context c, ShotAdapter.ShotOnClick shotOnClick) {
+    public ShotAdapter(Context c, List<Shot> mlista,  ShotOnClick shotOnClick) {
         this.mlista = mlista;
         this.c = c;
         this.shotOnClick = shotOnClick;
