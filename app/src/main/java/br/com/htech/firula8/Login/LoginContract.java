@@ -11,6 +11,6 @@ public interface LoginContract {
     }
 
     interface UserAction{
-
+        void getAcessToken(String code);
     }
 }

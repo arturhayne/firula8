@@ -27,8 +27,8 @@ public final class ApiConstants {
     public static final String DRIBBBLE_GET_ACCESS_TOKEN_URL = "https://dribbble.com/oauth/token";
 
     // for both flavor open and play
-    public static final String DRIBBBLE_AUTHORIZE_CALLBACK_URI = "x-firula8-oauth-dribbble://callback";
-    public static final String DRIBBBLE_AUTHORIZE_CALLBACK_URI_SCHEMA = "x-firula8-oauth-dribbble";
+    public static final String DRIBBBLE_AUTHORIZE_CALLBACK_URI = "firula://callback";
+    public static final String DRIBBBLE_AUTHORIZE_CALLBACK_URI_SCHEMA = "firula";
     public static final String DRIBBBLE_AUTHORIZE_CALLBACK_URI_HOST = "callback";
     public static final String DRIBBBLE_AUTHORIZE_SCOPE = "public write comment upload";
 

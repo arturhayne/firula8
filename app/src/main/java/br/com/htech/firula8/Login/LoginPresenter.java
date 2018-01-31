@@ -15,4 +15,15 @@ public class LoginPresenter implements LoginContract.UserAction{
         this.context = context;
         this.mView = mView;
     }
+
+
+    /**
+     * Requisição POST para pegar o token utilizando client_id, secret e code
+     * ...Exchange this for an access token: POST https://dribbble.com/oauth/token
+     * @param code
+     */
+    @Override
+    public void getAcessToken(String code) {
+
+    }
 }
