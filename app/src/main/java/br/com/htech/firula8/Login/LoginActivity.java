@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      * @param uri
      */
     private void retornoAturizacao(Uri uri){
-        if(uri.getPath().contains(ApiConstants.DRIBBBLE_AUTHORIZE_CALLBACK_URI)){
+        if(uri.toString().contains(ApiConstants.DRIBBBLE_AUTHORIZE_CALLBACK_URI)){
             String code = uri.getQueryParameter("code");
             userAction.getAcessToken(code);
         }
