@@ -77,36 +77,11 @@ public class RetrofitConection {
 
                 Request request = original;
 
-               // boolean isValidN1 = SessionControl.getInstance(context,NIVEL1).verificarValidadeToken();
-
-               // if (nivel == SEMNIVEL){
-
-                    return chain.proceed(request);
-
-               /* }
-
-                if (nivel == NIVEL0 && (sessionOauthN1.getAccess_token().equals("") || !isValidN1)) {
-
-                    if (sessionOauthN0.getAccess_token() != null ) {
-                        Request.Builder requestBuilder = original.newBuilder()
-                                .header("Authorization", sessionOauthN0.getAuthorization()); // <-- this is the important line
-
-                        request = requestBuilder.build();
-                    }
-
-                }else {
 
 
-                    if (sessionOauthN1.getAccess_token() != null ) {
-                        Request.Builder requestBuilder = original.newBuilder()
-                                .header("Authorization", sessionOauthN1.getAuthorization()); // <-- this is the important line
+                return chain.proceed(request);
 
-                        request = requestBuilder.build();
-                    }
-
-                }
-
-                return chain.proceed(request);*/
+              
             }
         };
 
