@@ -43,6 +43,41 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginContract.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginFragment/LoginFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginFragment/LoginFragmentContract.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginFragment/LoginFragmentPresenter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Login/LoginPresenter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/Main/MainActivity.java">
           <value>
             <set />
@@ -58,12 +93,57 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/br/com/htech/firula8/util/ApiConstants.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/inetpub/wwwroot/siap-mobile/app/src/main/java/br/gov/ba/prodeb/siap/siap_mobile/BarcodeScan/BarScanPresenter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/inetpub/wwwroot/siap-mobile/app/src/main/java/gson/ColetaExportacao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/inetpub/wwwroot/siap-mobile/app/src/main/java/model/ColetaExport.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/inetpub/wwwroot/siap-mobile/app/src/main/java/model/ItemNaoImportadoRegistro.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/inetpub/wwwroot/siap-mobile/app/src/main/java/model/MaterialRegistro.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/inetpub/wwwroot/siap-mobile/app/src/main/java/model/PatrimonioRegistro.java">
           <value>
             <set />
           </value>
