@@ -27,10 +27,10 @@ public interface BaseApi {
                                      @Field("client_secret") String client_secret,
                                      @Field("code") String code);
 
-    @GET("/v1/shots")
+    @GET("/v2/user/shots")
     Call<List<Shot>> getShots();
 
-    @GET("/v1/user/following/shots")
+    @GET("/v2/user/following/shots")
     Observable<Response<List<Shot>>> listFollowingShots(@Query("per_page") int perPage);
 
 

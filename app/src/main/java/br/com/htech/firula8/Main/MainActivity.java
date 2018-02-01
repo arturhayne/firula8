@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void onRefresh() {
-
         mUserActionsListener.carregarShots();
     }
 }

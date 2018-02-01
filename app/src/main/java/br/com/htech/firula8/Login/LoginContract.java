@@ -7,7 +7,8 @@ package br.com.htech.firula8.Login;
 public interface LoginContract {
 
     interface View{
-
+        void callDialog(String titulo, String mensagem);
+        void callMain();
     }
 
     interface UserAction{

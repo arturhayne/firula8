@@ -7,6 +7,8 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import br.com.htech.firula8.Modelo.Token;
+import br.com.htech.firula8.util.SessionManager;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,6 +31,28 @@ public class RetrofitConection {
 
     private static String lastToken;
 
+    public RetrofitConection(Context c,String acesso){
+        this.context = c;
+
+        gson = new GsonBuilder().setLenient().create();
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .addInterceptor(getInterceptorAuthorization(context))
+                .build();
+
+
+        retrofit = new Retrofit.Builder().baseUrl(acesso)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        baseAPI = retrofit.create(BaseApi.class);
+    }
+
+
     public RetrofitConection(Context c){
         this.context = c;
 
@@ -42,12 +66,16 @@ public class RetrofitConection {
                 .build();
 
 
-        retrofit = new Retrofit.Builder().baseUrl("https://dribbble.com")
+        retrofit = new Retrofit.Builder().baseUrl(ApiConstants.DRIBBBLE_BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         baseAPI = retrofit.create(BaseApi.class);
+    }
+
+    public static RetrofitConection conectionToken(Context c){
+        return new RetrofitConection(c,ApiConstants.DRIBBBLE_GET_ACCESS_TOKEN_URL);
     }
 
     public static RetrofitConection getInstance(Context c){
@@ -66,7 +94,6 @@ public class RetrofitConection {
         instance = null;
     }
 
-
     private static Interceptor getInterceptorAuthorization(final Context context){
 
         Interceptor interceptor = new Interceptor() {
@@ -77,36 +104,16 @@ public class RetrofitConection {
 
                 Request request = original;
 
-               // boolean isValidN1 = SessionControl.getInstance(context,NIVEL1).verificarValidadeToken();
+                Token token = SessionManager.getToken(context);
 
-               // if (nivel == SEMNIVEL){
+                if(!token.getAccess_token().equals("")){
+                    Request.Builder requestBuilder = original.newBuilder()
+                            .header("Authorization", token.getToken_type() + " "+token.getAccess_token());
 
-                    return chain.proceed(request);
-
-               /* }
-
-                if (nivel == NIVEL0 && (sessionOauthN1.getAccess_token().equals("") || !isValidN1)) {
-
-                    if (sessionOauthN0.getAccess_token() != null ) {
-                        Request.Builder requestBuilder = original.newBuilder()
-                                .header("Authorization", sessionOauthN0.getAuthorization()); // <-- this is the important line
-
-                        request = requestBuilder.build();
-                    }
-
-                }else {
-
-
-                    if (sessionOauthN1.getAccess_token() != null ) {
-                        Request.Builder requestBuilder = original.newBuilder()
-                                .header("Authorization", sessionOauthN1.getAuthorization()); // <-- this is the important line
-
-                        request = requestBuilder.build();
-                    }
-
+                    request = requestBuilder.build();
                 }
 
-                return chain.proceed(request);*/
+                return chain.proceed(request);
             }
         };
 

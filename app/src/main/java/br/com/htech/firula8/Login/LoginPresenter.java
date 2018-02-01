@@ -3,10 +3,13 @@ package br.com.htech.firula8.Login;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 import br.com.htech.firula8.API.ApiConstants;
 import br.com.htech.firula8.API.RetrofitConection;
+import br.com.htech.firula8.Modelo.Token;
+import br.com.htech.firula8.util.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +37,7 @@ public class LoginPresenter implements LoginContract.UserAction{
     @Override
     public void getAcessToken(String code) {
         RetrofitConection
-                .getInstance(context)
+                .conectionToken(context)
                 .getBaseAPI()
                 .getTokenClient(ApiConstants.DRIBBBLE_CLIENT_ID,
                         ApiConstants.DRIBBBLE_CLIENT_SECRET,
@@ -43,10 +46,15 @@ public class LoginPresenter implements LoginContract.UserAction{
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
 
                 Log.i("LOG", response.toString());
-                if (response.isSuccessful()) {
+                if (response.isSuccessful()&&response.code()==200) {
+
+                    Token token = new Gson()
+                            .fromJson(response.body(), Token.class);
+                    SessionManager.saveToken(context,token);
+                    mView.callMain();
 
                 } else {
-
+                        mView.callDialog("Problemas!","Problemas ao logar");
                 }
 
             }
@@ -54,6 +62,7 @@ public class LoginPresenter implements LoginContract.UserAction{
             @Override
             public void onFailure(Call<JsonElement> call, Throwable t) {
                 Log.i("LOG", "onFailure: " + t.getLocalizedMessage());
+                mView.callDialog("Problemas!","Problemas ao logar");
             }
         });
     }

@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import br.com.htech.firula8.API.ApiConstants;
+import br.com.htech.firula8.Main.MainActivity;
 import br.com.htech.firula8.R;
+import br.com.htech.firula8.util.Funcoes;
+import br.com.htech.firula8.util.SessionManager;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View{
 
@@ -23,6 +26,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         iniciarView();
         if(getIntent().getData()!=null){
             retornoAturizacao(getIntent().getData());
+        }
+        if(!SessionManager.getToken(this).getAccess_token().equals("")){
+            callMain();
         }
     }
 
@@ -60,6 +66,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             String code = uri.getQueryParameter("code");
             userAction.getAcessToken(code);
         }
+    }
+
+    public void callDialog(String titulo, String mensagem){
+        Funcoes.alertBuilder(this,titulo, mensagem);
+    }
+
+    @Override
+    public void callMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 

@@ -82,6 +82,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
 
     private void setList(List<Shot> shots) {
         mlista = checkNotNull(shots);
+        notifyDataSetChanged();
     }
 
 

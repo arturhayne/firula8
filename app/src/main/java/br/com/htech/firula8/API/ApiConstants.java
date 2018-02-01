@@ -22,9 +22,9 @@ public final class ApiConstants {
     }
 
     // general constants of Dribbble API
-    public static final String DRIBBBLE_V1_BASE_URL = "https://api.dribbble.com";
+    public static final String DRIBBBLE_BASE_URL = "https://api.dribbble.com";
     public static final String DRIBBBLE_AUTHORIZE_URL = "https://dribbble.com/oauth/authorize";
-    public static final String DRIBBBLE_GET_ACCESS_TOKEN_URL = "https://dribbble.com/oauth/token";
+    public static final String DRIBBBLE_GET_ACCESS_TOKEN_URL = "https://dribbble.com";
 
     // for both flavor open and play
     public static final String DRIBBBLE_AUTHORIZE_CALLBACK_URI = "firula://callback";
