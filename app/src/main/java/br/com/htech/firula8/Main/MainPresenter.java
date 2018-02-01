@@ -76,7 +76,6 @@ public class MainPresenter implements MainContract.UserAction,ShotAdapter.ShotOn
 
                         @Override
                         public void onFailure(Call<List<Shot>> call, Throwable t) {
-
                             view.showEmpty(true);
                             view.showProgressBar(false);
                             if (!(t instanceof EOFException))

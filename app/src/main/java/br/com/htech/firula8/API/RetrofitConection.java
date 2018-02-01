@@ -7,10 +7,13 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import br.com.htech.firula8.Modelo.Token;
+import br.com.htech.firula8.util.SessionManager;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -28,33 +31,51 @@ public class RetrofitConection {
 
     private static String lastToken;
 
-    public RetrofitConection(Context c){
+    public RetrofitConection(Context c,String acesso){
         this.context = c;
+
         gson = new GsonBuilder().setLenient().create();
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.addInterceptor(new Interceptor(){
-              @Override
-              public Response intercept(Chain chain) throws IOException{
-                  Request original = chain.request();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .addInterceptor(getInterceptorAuthorization(context))
+                .build();
 
-                  Request.Builder requestBuilder = original.newBuilder()
-                          .header("Accept", "application/json")
-                          .header("Authorization", "Bearer" + " " + ApiConstants.DRIBBBLE_CLIENT_ACCESS_TOKEN)
-                          .method(original.method(), original.body());
 
-                  Request request = requestBuilder.build();
-                  return chain.proceed(request);
-              }
-          });
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(ApiConstants.DRIBBBLE_V1_BASE_URL)
+        retrofit = new Retrofit.Builder().baseUrl(acesso)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(httpClient.build())
                 .build();
 
         baseAPI = retrofit.create(BaseApi.class);
+    }
+
+
+    public RetrofitConection(Context c){
+        this.context = c;
+
+        gson = new GsonBuilder().setLenient().create();
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .addInterceptor(getInterceptorAuthorization(context))
+                .build();
+
+
+        retrofit = new Retrofit.Builder().baseUrl(ApiConstants.DRIBBBLE_BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        baseAPI = retrofit.create(BaseApi.class);
+    }
+
+    public static RetrofitConection conectionToken(Context c){
+        return new RetrofitConection(c,ApiConstants.DRIBBBLE_GET_ACCESS_TOKEN_URL);
     }
 
     public static RetrofitConection getInstance(Context c){
@@ -71,6 +92,32 @@ public class RetrofitConection {
 
     public void clear() {
         instance = null;
+    }
+
+    private static Interceptor getInterceptorAuthorization(final Context context){
+
+        Interceptor interceptor = new Interceptor() {
+            @Override
+            public Response intercept(Interceptor.Chain chain) throws IOException {
+
+                Request original = chain.request();
+
+                Request request = original;
+
+                Token token = SessionManager.getToken(context);
+
+                if(!token.getAccess_token().equals("")){
+                    Request.Builder requestBuilder = original.newBuilder()
+                            .header("Authorization", token.getToken_type() + " "+token.getAccess_token());
+
+                    request = requestBuilder.build();
+                }
+
+                return chain.proceed(request);
+            }
+        };
+
+        return interceptor;
     }
 
 }
