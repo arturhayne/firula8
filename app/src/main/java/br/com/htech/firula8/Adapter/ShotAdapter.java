@@ -51,8 +51,10 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
     public void onBindViewHolder(ShotAdapter.MyViewHolder holder, final int position) {
         Shot shot = mlista.get(position);
         holder.title.setText(shot.getTitle());
-        holder.views_count.setText(shot.getViews_count());
-        holder.created_at.setText(shot.getCreated_at().toString());
+        holder.views_count.setText(Integer.toString(shot.getViews_count()));
+        if(shot.getCreated_at()!=null) {
+            holder.created_at.setText(shot.getCreated_at().toString());
+        }
 
         holder.ll_item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +84,6 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
 
     private void setList(List<Shot> shots) {
         mlista = checkNotNull(shots);
-        notifyDataSetChanged();
     }
 
 

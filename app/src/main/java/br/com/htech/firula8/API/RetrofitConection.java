@@ -106,7 +106,7 @@ public class RetrofitConection {
 
                 Token token = SessionManager.getToken(context);
 
-                if(!token.getAccess_token().equals("")){
+                if(token.getAccess_token()!=null){
                     Request.Builder requestBuilder = original.newBuilder()
                             .header("Authorization", token.getToken_type() + " "+token.getAccess_token());
 

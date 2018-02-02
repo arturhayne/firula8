@@ -6,7 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
+import br.com.htech.firula8.Main.MainActivity;
 import br.com.htech.firula8.Main.MainContract;
+import br.com.htech.firula8.Modelo.Shot;
 import br.com.htech.firula8.R;
 
 public class ShotDetailActivity extends AppCompatActivity implements ShotDetailContract.View{
@@ -18,16 +22,20 @@ public class ShotDetailActivity extends AppCompatActivity implements ShotDetailC
             tv_comment_count,
             tv_title;
     private ImageView image;
+    private Shot shot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shot_detail);
         mUserActionsListener = new ShotDetailPresenter(this,this);
+        shot = (Shot) getIntent().getSerializableExtra(MainActivity.SHOT_OBJECT);
         iniciarView();
     }
 
     private void iniciarView(){
 
     }
+
+
 }

@@ -14,6 +14,7 @@ public interface MainContract {
         void showProgressBar(Boolean show);
         void showShots(List<Shot> lista);
         void showEmpty(boolean show);
+        void showItem(Shot shot);
     }
 
     interface UserAction {

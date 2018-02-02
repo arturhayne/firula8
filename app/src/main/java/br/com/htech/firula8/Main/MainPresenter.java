@@ -31,7 +31,7 @@ public class MainPresenter implements MainContract.UserAction,ShotAdapter.ShotOn
 
     @Override
     public void abrirListaShot(Integer position) {
-
+        view.showItem(mList.get(position));
     }
 
     /**

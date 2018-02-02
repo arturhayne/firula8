@@ -1,12 +1,13 @@
 package br.com.htech.firula8.Modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by arturhayne on 27/01/2018.
  */
 
-public class Shot {
+public class Shot implements Serializable {
 
     private long id;
     private String title;
