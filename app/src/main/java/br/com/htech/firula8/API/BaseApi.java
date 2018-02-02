@@ -13,6 +13,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -30,8 +31,8 @@ public interface BaseApi {
     @GET("/v2/user/shots")
     Call<List<Shot>> getShots();
 
-    @GET("/v2/user/following/shots")
-    Observable<Response<List<Shot>>> listFollowingShots(@Query("per_page") int perPage);
+    @GET("/v2/shots/{id}")
+    Call<Shot> getShot(@Path("id") String id);
 
 
 }
