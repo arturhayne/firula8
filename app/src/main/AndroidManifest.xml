@@ -16,7 +16,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Main.MainActivity">
         </activity>
-        <activity android:name=".ShotDetail.ShotDetailActivity" />
+        <activity android:name=".ShotDetail.ShotDetailActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Main.MainActivity" />
+        </activity>
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

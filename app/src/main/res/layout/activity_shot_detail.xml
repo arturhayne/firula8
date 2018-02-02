@@ -20,11 +20,13 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@color/colorPrimaryDark"
             >
+
             <ImageView
+                android:id="@+id/shot_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/drib"
                 android:scaleType="centerCrop"
+                android:src="@drawable/drib"
                 app:layout_collapseMode="parallax" />
 
         </android.support.design.widget.CollapsingToolbarLayout>

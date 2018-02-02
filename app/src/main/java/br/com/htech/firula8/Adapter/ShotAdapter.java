@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import br.com.htech.firula8.Modelo.Shot;
@@ -53,7 +55,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
         holder.title.setText(shot.getTitle());
         holder.views_count.setText(Integer.toString(shot.getViews_count()));
         if(shot.getCreated_at()!=null) {
-            holder.created_at.setText(shot.getCreated_at().toString());
+            holder.created_at.setText(shot.getPublished_at().toString());
         }
 
         holder.ll_item.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +64,12 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
                 shotOnClick.abrirListaShot(position);
             }
         });
+
+        Glide.with(c).
+                load(shot.getImages().getNormal()).
+                centerCrop().
+                crossFade().
+                into(holder.shot_image);
     }
 
     @Override

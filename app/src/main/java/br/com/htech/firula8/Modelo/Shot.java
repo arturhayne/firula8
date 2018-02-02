@@ -22,6 +22,8 @@ public class Shot implements Serializable {
     private Image images;
 
     public Shot() {
+        views_count = 0;
+        comments_count =0;
     }
 
     public long getId() {
