@@ -2,7 +2,6 @@ package br.com.htech.firula8.Main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void showItem(Shot shot) {
         Intent intent = new Intent(this, ShotDetailActivity.class);
-        intent.putExtra(SHOT_OBJECT,(Serializable) shot);
+        intent.putExtra(SHOT_OBJECT,shot);
         startActivity(intent);
     }
 

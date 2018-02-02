@@ -1,10 +1,12 @@
 package br.com.htech.firula8.Modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by arturhayne on 27/01/2018.
  */
 
-public class Image {
+public class Image implements Serializable{
     private String hidpi;
     private String normal;
     private String teaser;

@@ -13,6 +13,10 @@ public class Shot implements Serializable {
     private String title;
     private String description;
     private Date created_at;
+    private Date published_at;
+    private Date updated_at;
+    private String html_url;
+    private String animated;
     private int views_count;
     private int comments_count;
     private Image images;
@@ -74,5 +78,37 @@ public class Shot implements Serializable {
 
     public void setImages(Image images) {
         this.images = images;
+    }
+
+    public Date getPublished_at() {
+        return published_at;
+    }
+
+    public void setPublished_at(Date published_at) {
+        this.published_at = published_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
+    }
+
+    public String getHtml_url() {
+        return html_url;
+    }
+
+    public void setHtml_url(String html_url) {
+        this.html_url = html_url;
+    }
+
+    public String getAnimated() {
+        return animated;
+    }
+
+    public void setAnimated(String animated) {
+        this.animated = animated;
     }
 }

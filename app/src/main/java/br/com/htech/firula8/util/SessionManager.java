@@ -1,8 +1,5 @@
 package br.com.htech.firula8.util;
 
-/**
- * Created by michel.souza on 28/12/2017.
- */
 
 import android.content.Context;
 import android.content.SharedPreferences;

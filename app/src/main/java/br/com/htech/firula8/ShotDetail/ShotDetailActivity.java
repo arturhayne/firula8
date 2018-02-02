@@ -1,15 +1,11 @@
 package br.com.htech.firula8.ShotDetail;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 import br.com.htech.firula8.Main.MainActivity;
-import br.com.htech.firula8.Main.MainContract;
 import br.com.htech.firula8.Modelo.Shot;
 import br.com.htech.firula8.R;
 
