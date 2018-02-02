@@ -54,9 +54,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
         Shot shot = mlista.get(position);
         holder.title.setText(shot.getTitle());
         holder.views_count.setText(Integer.toString(shot.getViews_count()));
-        if(shot.getCreated_at()!=null) {
-            holder.created_at.setText(shot.getPublished_at().toString());
-        }
+        holder.created_at.setText(shot.getPublished_at().toString());
 
         holder.ll_item.setOnClickListener(new View.OnClickListener() {
             @Override

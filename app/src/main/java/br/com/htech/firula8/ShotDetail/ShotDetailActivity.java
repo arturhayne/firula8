@@ -36,15 +36,16 @@ public class ShotDetailActivity extends AppCompatActivity implements ShotDetailC
     private void iniciarView(){
         tv_descricao = findViewById(R.id.detail_description);
         tv_comment_count = findViewById(R.id.detail_comments_count);
+        tv_views_count = findViewById(R.id.detail_views_count);
         tv_created = findViewById(R.id.detail_created_at);
         image = findViewById(R.id.shot_image);
     }
     private void inserindoValores(){
         setTitle(shot.getTitle());
-        tv_descricao.setText(shot.getDescription());
+        tv_descricao.setText(shot.getDescription().replace("<p>","").replace("</p>",""));
         tv_created.setText(shot.getPublished_at().toString());
-        //tv_comment_count.setText(shot.getComments_count());
-       // tv_views_count.setText(Integer.toString(shot.getComments_count()));
+        tv_comment_count.setText(Integer.toString(shot.getComments_count()));
+        tv_views_count.setText(Integer.toString(shot.getViews_count()));
 
         Glide.with(this).
                 load(shot.getImages().getNormal()).

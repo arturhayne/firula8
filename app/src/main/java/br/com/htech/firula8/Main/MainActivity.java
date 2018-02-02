@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         tv_empty = findViewById(R.id.tv_empty);
         progress_drib = findViewById(R.id.progress_shot);
         swipe_shots = findViewById(R.id.swipe_shots);
+        swipe_shots.setOnRefreshListener(this);
         list_shots = findViewById(R.id.recycler_list_shots);
         mUserActionsListener.carregarShots();
         list_shots.setLayoutManager(new LinearLayoutManager(this));
@@ -86,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void onRefresh() {
+    public void onRefresh()
+    {
         mUserActionsListener.carregarShots();
     }
 }

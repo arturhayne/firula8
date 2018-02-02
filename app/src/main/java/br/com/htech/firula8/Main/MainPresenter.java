@@ -40,11 +40,6 @@ public class MainPresenter implements MainContract.UserAction,ShotAdapter.ShotOn
     @Override
     public void carregarShots() {
 
-        if(mList != null){
-            view.showShots(mList);
-            view.showProgressBar(false);
-            view.showEmpty(false);
-        }else
         if (TestarConexao.VerificaConexao((Activity) context,this,"load_shots")) {
 
             view.showProgressBar(true);
