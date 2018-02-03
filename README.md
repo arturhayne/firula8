@@ -1,7 +1,7 @@
 # Firula8
 Um cliente de acesso a plataforma Dribbble
 
-##Funcionalidades
+## Funcionalidades
 
 ### Autenticação
 
