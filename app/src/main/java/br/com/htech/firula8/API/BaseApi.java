@@ -28,8 +28,15 @@ public interface BaseApi {
                                      @Field("client_secret") String client_secret,
                                      @Field("code") String code);
 
+    //Esse serviço infelizmente não existe mais na v2
+    @GET("/v2/shots")
+    Call<List<Shot>> getAllShots();
+
     @GET("/v2/user/shots")
     Call<List<Shot>> getShots();
+
+    @GET("/v2/user/shots")
+    Call<List<Shot>> getShotsPerPage(@Query("page") String page,@Query("per_page") String per_page);
 
     @GET("/v2/shots/{id}")
     Call<Shot> getShot(@Path("id") String id);

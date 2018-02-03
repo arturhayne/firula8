@@ -23,6 +23,8 @@ public class MainPresenter implements MainContract.UserAction,ShotAdapter.ShotOn
     private MainContract.View view;
     private Context context;
     private List<Shot> mList;
+    private static final String UM = "1";
+    private static final String TRINTA = "30";
 
     public MainPresenter(MainContract.View view, Context context) {
         this.view = view;
@@ -47,7 +49,7 @@ public class MainPresenter implements MainContract.UserAction,ShotAdapter.ShotOn
             RetrofitConection
                     .getInstance(context)
                     .getBaseAPI()
-                    .getShots()
+                    .getShotsPerPage(UM,TRINTA)
                     .enqueue(new Callback<List<Shot>>() {
                         @Override
                         public void onResponse(Call<List<Shot>> call, Response<List<Shot>> response) {
