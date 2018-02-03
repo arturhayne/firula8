@@ -27,7 +27,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         if(getIntent().getData()!=null){
             retornoAturizacao(getIntent().getData());
         }
-        if(SessionManager.getToken(this).getAccess_token()!=null){
+        if(SessionManager.getToken(this)!=null&&
+                SessionManager.getToken(this).getAccess_token()!=null){
             callMain();
         }
     }

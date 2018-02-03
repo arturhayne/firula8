@@ -6,6 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,9 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.htech.firula8.Adapter.ShotAdapter;
+import br.com.htech.firula8.Login.LoginActivity;
 import br.com.htech.firula8.Modelo.Shot;
 import br.com.htech.firula8.R;
 import br.com.htech.firula8.ShotDetail.ShotDetailActivity;
+import br.com.htech.firula8.util.SessionManager;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View,
         SwipeRefreshLayout.OnRefreshListener{
@@ -90,5 +94,26 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void onRefresh()
     {
         mUserActionsListener.carregarShots();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:{
+                SessionManager.saveToken(this,null);
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
