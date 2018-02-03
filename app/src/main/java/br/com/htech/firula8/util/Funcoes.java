@@ -5,6 +5,11 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Created by artur.oliveira on 28/12/2017.
  */
@@ -32,5 +37,23 @@ public class Funcoes {
                         dialog.dismiss();
                     }
                 }).show();
+    }
+
+    public static String getFormatedDate(String data){
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        format.setTimeZone(TimeZone.getTimeZone("GMT"));
+        try {
+            Date date = format.parse(data);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            // use UTC as timezone
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+            return sdf.format(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "00/00/0000";
+
     }
 }

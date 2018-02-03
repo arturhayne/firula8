@@ -13,7 +13,7 @@ public class Shot implements Serializable {
     private String title;
     private String description;
     private Date created_at;
-    private Date published_at;
+    private String published_at;
     private Date updated_at;
     private String html_url;
     private String animated;
@@ -82,11 +82,11 @@ public class Shot implements Serializable {
         this.images = images;
     }
 
-    public Date getPublished_at() {
+    public String getPublished_at() {
         return published_at;
     }
 
-    public void setPublished_at(Date published_at) {
+    public void setPublished_at(String published_at) {
         this.published_at = published_at;
     }
 

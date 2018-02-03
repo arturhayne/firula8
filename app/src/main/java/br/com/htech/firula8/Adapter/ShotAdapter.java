@@ -11,10 +11,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import br.com.htech.firula8.Modelo.Shot;
 import br.com.htech.firula8.R;
+import br.com.htech.firula8.util.Funcoes;
 
 import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
@@ -54,7 +59,8 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
         Shot shot = mlista.get(position);
         holder.title.setText(shot.getTitle());
         holder.views_count.setText(Integer.toString(shot.getViews_count()));
-        holder.created_at.setText(shot.getPublished_at().toString());
+
+        holder.created_at.setText(Funcoes.getFormatedDate(shot.getPublished_at()));
 
         holder.ll_item.setOnClickListener(new View.OnClickListener() {
             @Override

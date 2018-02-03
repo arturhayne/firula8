@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import br.com.htech.firula8.Main.MainActivity;
 import br.com.htech.firula8.Modelo.Shot;
 import br.com.htech.firula8.R;
+import br.com.htech.firula8.util.Funcoes;
 
 public class ShotDetailActivity extends AppCompatActivity implements ShotDetailContract.View{
 
@@ -56,7 +57,7 @@ public class ShotDetailActivity extends AppCompatActivity implements ShotDetailC
     private void inserindoValores(Shot shot){
         setTitle(shot.getTitle());
         tv_descricao.setText(shot.getDescription().replace("<p>","").replace("</p>",""));
-        tv_created.setText(shot.getPublished_at().toString());
+        tv_created.setText(Funcoes.getFormatedDate(shot.getPublished_at()));
         tv_comment_count.setText(Integer.toString(shot.getComments_count()));
         tv_views_count.setText(Integer.toString(shot.getViews_count()));
 
