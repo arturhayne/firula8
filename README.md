@@ -1,56 +1,56 @@
 # Firula8
-Um cliente de acesso a plataforma Dribbble
+An access client for Dribbble plataform
 
-## Funcionalidades
+## Functionalities
 
 ### Autenticação
 
-Autorização do usuário para utilizar os serviços (é necessário logar)
+Authorization to use the services (login required)
 
-Serviço:
+Service:
 ```
 GET https://dribbble.com/oauth/authorize
 ```
 
-Adiquirir código de acesso:
+Acquire access code:
 ```
 POST https://dribbble.com/oauth/token
 ```
 
-As informações do token são armazenadas em sessão.
+The token information is stored in session.
 
-### Listagem de shots
-Lista os 30 primeiros shots do usuário autenticado
+### Shots List
+Lists the first 30 shots 
 
-Serviço:
+Service:
 ```
 GET /user/shots?page=1&per_page=30"
 ```
 
 ### Shot
-Apresenta o shot selecionado na listagem
+Displays the selected shot in the listing
 
-Serviço:
+Service:
 ```
 GET /shots/:id
 ```
 
-## Mudanças de versão de API
-Infelizmente a versão 1 (v1) da api está depreciada, com isso houveram algumas alterações com essa mudança
+## API Version Changes
+Unfortunately api version 1 (v1) is deprecated, so there have been some changes with this change
 
-### Autenticação
-Na versão anterior não havia necessidade do usuário autenticar, porém nessa é necessário o usuário possuir login e senha, inclusive ser uma autenticação web.
+### Authentication
+In the previous version there was no need for the user to authenticate, however it is necessary for the user to have a login and password, including a web authentication.
 
-### Campos removidos
-Os campos "created_at", "views_counts" e "comments_counts", também foram removidos, tanto da listagem, quanto do serviço de pegar único shot. O campo "created_at" foi substituido por "published_at"
+### Fields Removed
+The "created_at", "views_counts" and "comments_counts" fields have also been removed from both the listing and the single shot pickup service. The "created_at" field has been replaced by "published_at"
 
-### Listagem por usuário
-A listagem de shots como era antigamente:
+### Listing by user
+The list of shots as it was formerly:
 ```
 GET /shots
 ```
 
-Ela permitia mostrar a listagem de todos os shots, porém hoje, segundo a documentação, lista apenas os shots do usuário autenticado
+It allowed to show the listing of all shots, but today, according to the documentation, list only the shots of the authenticated user
 ```
 GET /user/shots
 ```
